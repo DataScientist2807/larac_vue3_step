@@ -1,10 +1,9 @@
 <template>
   <div>
-    <section v-show="assignments.filter(a => !a.complete).length">
+    <section v-show="inProgressAssignments.length">
       <h2 class="font-bold mb-2">In Progress</h2>
       <ul>
-        <li v-for="assignment in assignments.filter(a => !a.complete)" 
-          :key="assignment.id">
+        <li v-for="assignment in inProgressAssignments" :key="assignment.id">
           <label
             >{{ assignment.name }}
             <input type="checkbox" v-model="assignment.complete" />
@@ -12,11 +11,10 @@
         </li>
       </ul>
     </section>
-    <section v-show="assignments.filter(a => a.complete).length" class="mt-8">
-      <h2 class="font-bold mb-2 ">Completed</h2>
+    <section v-show="completedAssignments.length" class="mt-8">
+      <h2 class="font-bold mb-2">Completed</h2>
       <ul>
-        <li v-for="assignment in assignments.filter(a => a.complete)" 
-          :key="assignment.id">
+        <li v-for="assignment in completedAssignments" :key="assignment.id">
           <label
             >{{ assignment.name }}
             <input type="checkbox" v-model="assignment.complete" />
@@ -39,10 +37,14 @@ export default {
       ],
     };
   },
-  methods: {
-    toggle() {},
+  computed: {
+    inProgressAssignments() {
+      return this.assignments.filter((assignment) => !assignment.complete);
+    },
+    completedAssignments() {
+      return this.assignments.filter((assignment) => assignment.complete);
+    },
   },
-  mounted() {},
 };
 </script>
 
