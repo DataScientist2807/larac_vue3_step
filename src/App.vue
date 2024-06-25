@@ -1,17 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <p>
+      <input type="text" v-model="greeting" />
+    </p>
+    <p>{{ greeting }} {{ greeting.length }}</p>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: "App",
+  data() {
+    return {
+      greeting: "Hello World",
+    };
+  },
+  mounted() {
+    /* alert('hello') */
+    setTimeout(() => {
+      this.greeting = 'Changed';
+    }, 3000)
   }
-}
+};
 </script>
 
 <style>
