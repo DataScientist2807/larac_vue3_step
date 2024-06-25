@@ -1,9 +1,11 @@
 <template>
   <div>
-    <!--  <button class="text-green">Click Me</button>
-    <button :class="buttonClasses">Click Me</button> -->
-    <!-- <button :class="buttonClasses" v-on:click="toggle">Click Me</button> -->
-    <button :class="active ? 'text-red' : 'text-green'" @click="toggle">Click Me</button>
+    <h2 class="font-bold mb-2">Assignments</h2>
+    <ul>
+      <li>Finish project <input type="checkbox"></li>
+      <li>Read chapter 4 <input type="checkbox"></li>
+      <li>Turn in homework <input type="checkbox"></li>
+    </ul>
   </div>
 </template>
 
@@ -12,34 +14,17 @@ export default {
   name: "App",
   data() {
     return {
-      /* buttonClasses: "text-green", */
-      active: false,
+      assignments: [
+        
+      ]
     };
   },
   methods: {
-    toggle() {
-      /* alert('toggle'); */
-      /* this.buttonClasses = 'text-red' */
-      this.active = !this.active;
-    },
+    toggle() {},
   },
   mounted() {},
 };
 </script>
 
 <style>
-html,
-body {
-  height: 100%;
-}
-body {
-  display: grid;
-  place-items: center;
-}
-.text-red {
-  color: red;
-}
-.text-green {
-  color: green;
-}
 </style>
