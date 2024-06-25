@@ -4,7 +4,7 @@
     <ul>
       <li v-for="assignment in assignments" :key="assignment.id">
         <label>{{ assignment.name }}
-          <input type="checkbox">
+          <input type="checkbox" v-model="assignment.complete">
         </label>
         
       </li>
