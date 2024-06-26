@@ -3,7 +3,7 @@
   <appbutton>Click Me</appbutton>
 </template>
 
-<script>
+<script type="module">
 import appbutton from './components/AppsButton.vue'
 
 export default {
