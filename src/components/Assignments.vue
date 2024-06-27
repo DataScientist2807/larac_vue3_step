@@ -9,9 +9,9 @@
       title="Completed"
     ></AssignmentList>
 
-    <form>
+    <form @submit.prevent="add">
       <div class="border border-gray-600 text-black">
-        <input placeholder="New assignment" class="p-2" />
+        <input v-model="newAssignment" placeholder="New assignment" class="p-2" />
         <button type="submit" class="bg-white p-2 border-l">Add</button>
       </div>
     </form>
@@ -30,6 +30,8 @@ export default {
         { id: 2, name: "Read chapter 4", complete: false },
         { id: 3, name: "Turn in homework", complete: false },
       ],
+
+      newAssignment: ''
     };
   },
   computed: {
@@ -39,7 +41,6 @@ export default {
     completed() {
       return this.assignments.filter((assignment) => assignment.complete);
     }, */
-
     filters() {
       return {
         inProgress: this.assignments.filter(
@@ -49,6 +50,19 @@ export default {
       };
     },
   },
+  methods: {
+      add() {
+        /* e.preventDefault(); */
+        /* alert('Hi') */
+        /* alert(this.newAssignment) */
+        this.assignments.push({
+          name: this.newAssignment,
+          completed: false,
+          id: this.assignments.length + 1
+        });
+        this.newAssignment = ''
+      }
+    }
 };
 </script>
 <style>
