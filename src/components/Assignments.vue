@@ -35,12 +35,6 @@ export default {
     };
   },
   computed: {
-    /* inProgress() {
-      return this.assignments.filter((assignment) => !assignment.complete);
-    },
-    completed() {
-      return this.assignments.filter((assignment) => assignment.complete);
-    }, */
     filters() {
       return {
         inProgress: this.assignments.filter(
@@ -52,9 +46,6 @@ export default {
   },
   methods: {
       add() {
-        /* e.preventDefault(); */
-        /* alert('Hi') */
-        /* alert(this.newAssignment) */
         this.assignments.push({
           name: this.newAssignment,
           completed: false,
