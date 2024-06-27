@@ -8,21 +8,16 @@
       :assignments="filters.completed"
       title="Completed"
     ></AssignmentList>
-
-    <form @submit.prevent="add">
-      <div class="border border-gray-600 text-black">
-        <input v-model="newAssignment" placeholder="New assignment" class="p-2" />
-        <button type="submit" class="bg-white p-2 border-l">Add</button>
-      </div>
-    </form>
+    <AssignmentCreate @add="add"></AssignmentCreate>
   </section>
 </template>
 <script>
 import AssignmentList from "./AssignmentList.vue";
+import AssignmentCreate from "./AssignmentCreate.vue";
 
 export default {
   name: "Assignments",
-  components: { AssignmentList },
+  components: { AssignmentList, AssignmentCreate },
   data() {
     return {
       assignments: [
@@ -31,7 +26,6 @@ export default {
         { id: 3, name: "Turn in homework", complete: false },
       ],
 
-      newAssignment: ''
     };
   },
   computed: {
@@ -45,13 +39,12 @@ export default {
     },
   },
   methods: {
-      add() {
+      add(name) {
         this.assignments.push({
-          name: this.newAssignment,
+          name: name,
           completed: false,
           id: this.assignments.length + 1
         });
-        this.newAssignment = ''
       }
     }
 };
