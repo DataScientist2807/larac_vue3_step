@@ -9,8 +9,6 @@ export default {
   components: {
     Assignments
   },
-
- 
 };
 </script>
 

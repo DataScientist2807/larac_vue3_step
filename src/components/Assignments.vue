@@ -1,14 +1,21 @@
 <template>
   <section class="space-y-6">
-  <AssignmentList
-    :assignments="filters.inProgress"
-    title="in Progress"
-  ></AssignmentList>
-  <AssignmentList
-    :assignments="filters.completed"
-    title="Completed"
-  ></AssignmentList>
-</section>
+    <AssignmentList
+      :assignments="filters.inProgress"
+      title="in Progress"
+    ></AssignmentList>
+    <AssignmentList
+      :assignments="filters.completed"
+      title="Completed"
+    ></AssignmentList>
+
+    <form>
+      <div class="border border-gray-600 text-black">
+        <input placeholder="New assignment" class="p-2" />
+        <button type="submit" class="bg-white p-2 border-l">Add</button>
+      </div>
+    </form>
+  </section>
 </template>
 <script>
 import AssignmentList from "./AssignmentList.vue";
@@ -35,10 +42,12 @@ export default {
 
     filters() {
       return {
-      inProgress: this.assignments.filter((assignment) => !assignment.complete),
-      completed: this.assignments.filter((assignment) => assignment.complete)
-    }
-    }
+        inProgress: this.assignments.filter(
+          (assignment) => !assignment.complete
+        ),
+        completed: this.assignments.filter((assignment) => assignment.complete),
+      };
+    },
   },
 };
 </script>
